@@ -19,11 +19,18 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
+
+        $destinations = [
+            1=>'suadmin',
+            2=>'admin',
+            3=>'moderator',
+            4=>'home',
+        ];
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                return redirect($destinations[Auth::user()->role]);
             }
         }
 
