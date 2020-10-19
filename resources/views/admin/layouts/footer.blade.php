@@ -1,8 +1,8 @@
 <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
+    <strong>حقوق الملكية &copy; 2020 - 2021 <a href="#">منطقة القليوبية الأزهرية</a>.</strong>
+    جميع الحقوق محفوظة.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.0-rc.1
+      <b>الإصدار</b> 1
     </div>
   </footer>
 
