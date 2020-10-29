@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SuAdminController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,3 +31,10 @@ Route::get('/logout', function () {
     auth()->logout();
     return view('welcome');
 });
+
+Route::get('/adduser',[App\Http\Controllers\SuAdmin\UsersController::class,'create']);
+Route::Post('/adduser/store',[App\Http\Controllers\SuAdmin\UsersController::class,'store'])->name ('adduser.store');
+Route::get('/users',[App\Http\Controllers\SuAdmin\UsersController::class,'index'])->name ('users.index');
+Route::get('/users/edit/{id}',[App\Http\Controllers\SuAdmin\UsersController::class,'edit'])->name ('users.edit');
+Route::Post('/users/update/{id}',[App\Http\Controllers\SuAdmin\UsersController::class,'update'])->name ('users.update');
+Route::get('/users/delete/{id}',[App\Http\Controllers\SuAdmin\UsersController::class,'destroy'])->name ('users.destroy');

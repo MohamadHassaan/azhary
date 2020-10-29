@@ -24,6 +24,7 @@ class User extends Authenticatable
         'role',
         'active',
         'password',
+        'photo',
     ];
 
     /**
@@ -47,6 +48,7 @@ class User extends Authenticatable
 
     protected $attributes = [
         'role'  => '4',
-        'active'=> '1',
+        'active'=> '2',
+        'photo' => '/storage/users/userphoto/01.png',
     ];
 }

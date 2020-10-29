@@ -1,3 +1,13 @@
+<style>
+  .avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  </style>
+
+
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -40,7 +50,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-            <img src= "{{url('/')}}/adminlayout/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+            <img src= {{ Auth::user()->photo }} alt="User Avatar" class="avatar">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Brad Diesel
@@ -54,35 +64,8 @@
           </a>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="{{url('/')}}adminlayout/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="{{url('/')}}/adminlayout/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
+
+
           </a>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
@@ -142,13 +125,15 @@
           <!-- Sidebar user panel (optional) -->
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-              <img src="{{url('/')}}/adminlayout/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+              <img src={{ Auth::user()->photo }} class="avatar"  alt="User Image">
             </div>
             <div class="info">
               <a href="#" class="d-block">{{ Auth::user()->name }}</a>
             </div>              
             
           </div>
+
+
     
           <!-- Sidebar Menu -->
           <nav class="mt-2">
@@ -182,20 +167,10 @@
                       <p>{{trans('suadmin.institutes')}}</p>
                     </a>
                   </li>
-
-                  
                 </ul>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-th"></i>
-                  <p>
-                    New (???)
-                    <span class="right badge badge-danger">New</span>
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item has-treeview">
+
+    <li class="nav-header">ADMIN</li>
+        <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
@@ -204,7 +179,7 @@
                     <span class="badge badge-info right">All</span>
                   </p>
                 </a>
-                <ul class="nav nav-treeview">
+          <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a href="pages/layout/top-nav.html" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
@@ -235,8 +210,10 @@
                       <p>Vacation</p>
                     </a>
                   </li>
-                </ul>
-              </li>
+          </ul>
+              
+        </li>
+
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-building"></i>
@@ -278,29 +255,41 @@
                   </li>
                 </ul>
               </li>
-              <li class="nav-header">SUPER ADMIN</li>
-              <li class="nav-item">
-                <a href="pages/calendar.html" class="nav-link">
-                  <i class="nav-icon far fa-calendar-alt"></i>
-                  <p>
-                    اضافة منطقة
-                    <span class="badge badge-info right">2</span>
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/gallery.html" class="nav-link">
-                  <i class="nav-icon far fa-image"></i>
-                  <p>
-                    اضافة معهد
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item has-treeview">
+
+  {{-- tree list on navbar --}}
+        <li class="nav-header">SUPPER ADMIN </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="fas fa-users-cog"></i>
+                <p>
+                  User Managment
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href={{'adduser'}} class="nav-link">
+                      <i class="fas fa-user-plus"></i>
+                      <p>Add New User</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href={{'users'}} class="nav-link">
+                      <i class="fas fa-address-card"></i>
+                      <p>View Users</p>
+                    </a>
+                  </li>
+              </ul>
+            
+          </li>
+        
+  {{-- end of list --}}
+                    
+              <li class="nav-item has-treeview"> 
                 <a href="#" class="nav-link">
-                  <i class="nav-icon far fa-envelope"></i>
+                  <i class="fas fa-bezier-curve"></i>
                   <p>
-                    Mailbox
+                    PLATFORM
                     <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
@@ -308,50 +297,34 @@
                   <li class="nav-item">
                     <a href="pages/mailbox/mailbox.html" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Inbox</p>
+                      <p>Add New Area</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="pages/mailbox/compose.html" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Compose</p>
+                      <p>Add New Section</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="pages/mailbox/read-mail.html" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Read</p>
+                      <p>Add New Institute</p>
                     </a>
                   </li>
                 </ul>
               </li>
-             </li>
-              <li class="nav-header">MISCELLANEOUS</li>
-              <li class="nav-item">
-                <a href="https://adminlte.io/docs/3.0" class="nav-link">
-                  <i class="nav-icon fas fa-file"></i>
-                  <p>Documentation</p>
-                </a>
-              </li>
+             
+
               <li class="nav-header">USER STATE</li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon far fa-circle text-danger"></i>
-                  <p class="text">Users Panel</p>
-                </a>
-              </li>
+
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon far fa-circle text-warning"></i>
                   <p>Log Out</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon far fa-circle text-info"></i>
-                  <p>Profile</p>
-                </a>
-              </li>
+
             </ul>
           </nav>
           <!-- /.sidebar-menu -->
