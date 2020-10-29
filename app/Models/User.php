@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use League\CommonMark\Extension\Attributes\Node\Attributes;
+use PhpParser\Node\Attribute;
 
 class User extends Authenticatable
 {
@@ -19,7 +21,10 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'role',
+        'active',
         'password',
+        'photo',
     ];
 
     /**
@@ -39,5 +44,11 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+    ];
+
+    protected $attributes = [
+        'role'  => '4',
+        'active'=> '2',
+        'photo' => '/storage/users/userphoto/01.png',
     ];
 }
